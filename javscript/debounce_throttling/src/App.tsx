@@ -1,35 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Tabs } from "./components/tab/Tab.tsx";
+import Search from "./components/search/Search.tsx";
+import ScrollTracker from "./components/scroll/ScrollTracker.tsx";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <main>
+      <header>
+        <h1>Debounce & Throttling</h1>
+      </header>
+      <Tabs defaultValue="debounce">
+        <Tabs.List>
+          <Tabs.Trigger value="debounce">Debounce</Tabs.Trigger>
+          <Tabs.Trigger value="throttling">Throttling</Tabs.Trigger>
+        </Tabs.List>
+
+        {/* 디바운스 실습 */}
+        <Tabs.Content value="debounce">
+          <Search />
+        </Tabs.Content>
+
+        {/* 스로틀링 실습 */}
+        <Tabs.Content value="throttling">
+          <ScrollTracker />
+        </Tabs.Content>
+      </Tabs>
+    </main>
+  );
 }
 
-export default App
+export default App;
